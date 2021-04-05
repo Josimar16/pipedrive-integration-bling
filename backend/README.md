@@ -4,7 +4,7 @@
 
 **_Inicializando_**
 
-Obs:. É necessário que preencha as variaveis de ambiente no arquivo .env
+Obs:. É necessário que crie as variaveis de ambiente de acordo como mostra no arquivo .env.example
 
 **_Start usando yarn_**
 
