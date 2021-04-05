@@ -1,57 +1,36 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RenteX Documentation",
-    "description": "This is an API Rent",
+    "title": "Integration Documentation",
+    "description": "This is an API Integration",
     "version": "1.0.0",
     "contact": {
       "email": "josimarjr479@gmail.com"
     }
   },
   "paths": {
-    "/categories": {
+    "/deals": {
       "post": {
         "tags": [
-          "Categories"
+          "Deals"
         ],
-        "summary": "Create a category",
-        "description": "Create new a category",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  }
-                }
-              },
-              "example": {
-                "name": "Category name simple",
-                "description": "Category description simple"
-              }
-            }
-          }
-        },
+        "summary": "Create a deal",
+        "description": "Create new a deal in mongo/bling",
         "responses": {
           "201": {
             "description": "Created"
           },
-          "500": {
-            "description": "Category already exist!"
+          "401": {
+            "description": "Unauthorization!"
           }
         }
       },
       "get": {
         "tags": [
-          "Categories"
+          "Deals"
         ],
-        "summary": "List all categories",
-        "description": "List all categories",
+        "summary": "List all deals",
+        "description": "List all deals in mongo",
         "responses": {
           "200": {
             "description": "Success",
@@ -65,11 +44,14 @@
                       "id": {
                         "type": "string"
                       },
-                      "name": {
+                      "title": {
                         "type": "string"
                       },
-                      "description": {
-                        "type": "string"
+                      "date": {
+                        "type": "date"
+                      },
+                      "amount": {
+                        "type": "number"
                       },
                       "created_at": {
                         "type": "string"
@@ -83,77 +65,56 @@
         }
       }
     },
-    "/categories/import": {
+    "/reports": {
       "post": {
         "tags": [
-          "Categories"
+          "Reports"
         ],
-        "summary": "Upload a new category",
-        "description": "Upload a new category",
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "file": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/specifications": {
-      "post": {
-        "tags": [
-          "Specifications"
-        ],
-        "summary": "Create a specification",
-        "description": "Create new a specification",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/definitions/Specification"
-              },
-              "example": {
-                "name": "Specification name simple",
-                "description": "Specification description simple"
-              }
-            }
-          }
-        },
+        "summary": "Create a report",
+        "description": "Create a new report with all the day's trades",
         "responses": {
           "201": {
             "description": "Created"
           },
           "500": {
-            "description": "Specification already exist!"
+            "description": "Falha ao criar o report!"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "List all reports",
+        "description": "List the total values of the day's trades",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "date"
+                      },
+                      "count": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
-  },
-  "definitions": {
-    "Specification": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        }
-      }
-    }
   }
+
 }

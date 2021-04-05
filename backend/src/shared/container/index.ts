@@ -1,11 +1,13 @@
 import { container } from 'tsyringe';
+import './providers';
 
-import { ICategoriesRepository } from '../../modules/cars/repositories/ICategoriesRepository';
-import { CategoriesRepository } from '../../modules/cars/repositories/implementations/CategoriesRepository';
+import { DealsRepository } from '../../modules/deals/infra/typeorm/repositories/DealsRepository';
+import { IDealsRepository } from '../../modules/deals/repositories/IDealsRepository';
 
-container.registerSingleton<ICategoriesRepository>('CategoriesRepository', CategoriesRepository);
+import { ReportsRepository } from '../../modules/deals/infra/typeorm/repositories/ReportsRepository';
+import { IReportsRepository } from '../../modules/deals/repositories/IReportsRepository';
 
-import { ISpecificationsRepository } from '../../modules/cars/repositories/ISpecificationsRepository';
-import { SpecificationsRepository } from '../../modules/cars/repositories/implementations/SpecificationsRepository';
 
-container.registerSingleton<ISpecificationsRepository>('SpecificationsRepository', SpecificationsRepository);
+container.registerSingleton<IDealsRepository>('DealsRepository', DealsRepository);
+
+container.registerSingleton<IReportsRepository>('ReportsRepository', ReportsRepository);

@@ -23,6 +23,8 @@ services:
     ports:
       - 3333:3333
       - 9229:9229
+    environment:
+      - KEY_PIPEDRIVE=a5339fb27edbb283c203f6c5b761887c0c228888
     volumes:
       - .:/usr/app
     networks:
