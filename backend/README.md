@@ -22,7 +22,7 @@ Obs:. É necessário que crie as variaveis de ambiente de acordo como mostra no 
 
 **_Requisitos funcionais_**
 
-[x] Buscar as negociações criadas no Pipedrive com status 'Won';
+[X] Buscar as negociações criadas no Pipedrive com status 'Won';
 
 [x] Cadastrar todas as negociações no Bling;
 
